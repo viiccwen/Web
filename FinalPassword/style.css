@@ -1,0 +1,47 @@
+#title {
+    font-size: 35px;
+}
+
+.newgame-btn {
+    background-color: aqua;
+    color: white;
+}
+
+.btn {
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 5px 2px;
+    padding: 5px 10px;
+}
+
+#number-container {
+    display: flex;
+    align-items: center;
+}
+
+#input-container {
+    display: flex;
+}
+
+.ok-btn {
+    background-color:cornflowerblue;
+    color: white;
+}
+
+#dif-text {
+    color: red;
+}
+
+#record-container {
+    display: flex;
+}
+
+#record-textarea {
+    margin-top: 10px;
+}
+
+.answer-btn {
+    background-color:chartreuse;
+    color: white;
+}
