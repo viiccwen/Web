@@ -1,0 +1,43 @@
+#title {
+    text-align: center;
+    font-size: 32px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.question_body {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.q_title {
+    font-size: 35px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.q_op {
+    margin: 5px;
+    font-size: 24px;
+}
+
+.btn-container {
+    display: flex;
+}
+
+.my-btn {
+    font-size: 25px;
+    margin: 5px;
+    padding: 10px;
+    border: 2px  none;
+    background-color: cadetblue;
+    color: white;
+    cursor: pointer;
+}
+
+#bottom {
+    text-align: center;
+    font-size: 32px;
+}

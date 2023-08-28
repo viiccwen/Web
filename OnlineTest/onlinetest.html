@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>P1</title>
+</head>
+<body>
+    <div id="title">線上測驗</div>
+    <main>
+        <div id="question1" class="question_body">
+            <div class="q_title">第一題</div>
+            <div class="q_op"><input type="radio" name="q1" id="q1_1" value="1"><label for="q1_1">a:答案a1</label></div>
+            <div class="q_op"><input type="radio" name="q1" id="q1_2" value="2"><label for="q1_2">b:答案b1</label></div>
+            <div class="q_op"><input type="radio" name="q1" id="q1_3" value="3"><label for="q1_3">c:答案c1</label></div>
+            <div class="q_op"><input type="radio" name="q1" id="q1_4" value="4"><label for="q1_4">d:答案d1</label></div>
+            <input type="button" class="my-btn btn-next"  data-target="1" value="下一個問題">
+        </div>
+        <div id="question2" class="question_body">
+            <div class="q_title">第二題</div>
+            <div class="q_op"><input type="radio" name="q2" id="q2_1" value="1"><label for="q2_1">a:答案a2</label></div>
+            <div class="q_op"><input type="radio" name="q2" id="q2_2" value="2"><label for="q2_2">b:答案b2</label></div>
+            <div class="q_op"><input type="radio" name="q2" id="q2_3"  value="3"><label for="q2_3">c:答案c2</label></div>
+            <div class="q_op"><input type="radio" name="q2" id="q2_4" value="4"><label for="q2_4">d:答案d2</label></div>
+            <div class="btn-container">
+                <input type="button" class="my-btn btn-back" data-target="2" value="上一個問題">
+                <input type="button" class="my-btn btn-next" data-target="2" value="下一個問題">
+            </div>
+        </div>
+        <div id="question3" class="question_body">
+            <div class="q_title">第三題</div>
+            <div class="q_op"><input type="radio" name="q3" id="q3_1" value="1"><label for="q3_1">a:答案a3</label></div>
+            <div class="q_op"><input type="radio" name="q3" id="q3_2" value="2"><label for="q3_2">b:答案b3</label></div>
+            <div class="q_op"><input type="radio" name="q3" id="q3_3" value="3"><label for="q3_3">c:答案c3</label></div>
+            <div class="q_op"><input type="radio" name="q3" id="q3_4" value="4"><label for="q3_4">d:答案d3</label></div>
+            <div class="btn-container">
+                <input type="button" class="my-btn btn-back" data-target="3" value="上一個問題">
+                <input type="button" class="my-btn btn-submit" data-target="3" value="送出測驗">
+            </div>
+        </div>
+        <div id="bottom">
+        </div>
+    </main>
+</body>
+</html>
