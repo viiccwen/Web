@@ -1,0 +1,34 @@
+header {
+    text-align: center;
+    font-size: 30px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn {
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-left: 5px;
+    color: white;
+}
+
+.add-btn {
+    background-color:cadetblue;
+}
+
+.del-btn {
+    background-color: red;
+}
+
+table {
+    width: 100%;
+}
+
+tbody {
+    text-align: center;
+}

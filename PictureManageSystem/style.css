@@ -1,0 +1,57 @@
+body {
+    margin: 10px 100px;
+}
+
+header {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#title {
+    margin-right: auto;
+}
+
+.btn {
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.select-btn {
+    margin-left: auto;
+    
+}
+
+.watch-btn {
+    background-color: greenyellow;
+}
+
+.modify-btn {
+    background-color:cadetblue;
+}
+
+.delete-btn {
+    background-color: red;
+}
+
+.table-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+}
+
+.func-btn {
+    display: flex;
+    justify-content: center;
+}
