@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./system.php">
+    <script src="./script.js"></script>
+    <title>Picture Management System</title>
+</head>
+
+<body>
+    <header>
+        <div id="title">圖片檔案管理系統</div>
+        <input type="file" class="btn select-btn" value="新增圖片" accept=".jpg,.jpeg,.png,.git">
+    </header>
+    <main>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <td>所有檔案資訊</td>
+                </tr>
+                <tr>
+                    <th>圖片</th>
+                    <th>檔案名稱</th>
+                    <th>檔案大小</th>
+                    <th>檔案格式</th>
+                    <th>指令動作</th>
+                </tr>
+                <tr>
+                    <td><img src="" alt=""></td>
+                    <td>1.jpg</td>
+                    <td>628MB</td>
+                    <td>.jpg</td>
+                    <td class="func-btn">
+                        <input type="button" class="btn watch-btn" value="檢視">
+                        <input type="button" class="btn modify-btn" value="修改">
+                        <input type="button" class="btn delete-btn" value="刪除">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>
