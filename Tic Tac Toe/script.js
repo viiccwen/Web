@@ -1,77 +1,91 @@
 const d = document;
-var cur_symbol = '';
-var player_symbol = 0;
-var order = Math.floor(Math.random() * 2);
+var board = [['', '', ''], ['', '', ''], ['', '', '']];
+var turn = 'X';
+var player;
+var winner;
 
-var arr = ['', '', '', '', '', '', '', '', ''];
-
-function chooseSymbol(e) {
+function select(e) {
     var et = e.target;
-    if (et.classList.contains("d-x")) {
-        player_symbol = 1;
-    } else if (et.classList.contains("d-o")) {
-        player_symbol = 2;
-    }
+    player = et.value;
 
-    if (order == 0) cur_symbol = 'X';
-    else cur_symbol = 'O';
+    var seed = Math.floor(Math.random() * 2);
+
+    if (seed == 0) turn = 'X';
+    else turn = 'O';
+
+    var dialog = d.getElementById('dialog');
+    dialog.close();
 }
 
-function Check() {
-    var status = 0;
-    if ((arr[0] == 'O' && arr[1] == 'O' && arr[2] == 'O') ||
-        (arr[3] == 'O' && arr[4] == 'O' && arr[5] == 'O') ||
-        (arr[6] == 'O' && arr[7] == 'O' && arr[8] == 'O') ||
-        (arr[0] == 'O' && arr[4] == 'O' && arr[8] == 'O') ||
-        (arr[2] == 'O' && arr[4] == 'O' && arr[6] == 'O') ||
-        (arr[0] == 'O' && arr[3] == 'O' && arr[6] == 'O') ||
-        (arr[1] == 'O' && arr[4] == 'O' && arr[7] == 'O') ||
-        (arr[2] == 'O' && arr[5] == 'O' && arr[8] == 'O')) status = 1;
-    else if ((arr[0] == 'X' && arr[1] == 'X' && arr[2] == 'X') ||
-        (arr[3] == 'X' && arr[4] == 'X' && arr[5] == 'X') ||
-        (arr[6] == 'X' && arr[7] == 'X' && arr[8] == 'X') ||
-        (arr[0] == 'X' && arr[4] == 'X' && arr[8] == 'X') ||
-        (arr[2] == 'X' && arr[4] == 'X' && arr[6] == 'X') ||
-        (arr[0] == 'X' && arr[3] == 'X' && arr[6] == 'X') ||
-        (arr[1] == 'X' && arr[4] == 'X' && arr[7] == 'X') ||
-        (arr[2] == 'X' && arr[5] == 'X' && arr[8] == 'X')) status = 2;
-    else {
-        var cnt = 0;
-        for (var i = 0; i < 9; i++) {
-            if (arr[i] != '') cnt++;
+function check() {
+    var flag = 0;
+    for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < 3; j++) {
+            if (board[i][j] == '') {
+                flag = 1;
+                break;
+            }
         }
-        if (cnt == 9) status = 3;
     }
 
-    if (status == 2) {
-        if (player_symbol == 1) window.alert("恭喜!你贏了!");
-        else if (player_symbol == 2) window.alert("你輸了!下次再努力!");
-        location.reload()
+    var status = 0;
+
+    for (var i = 0; i < 3; i++) {
+        if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != '') {
+            status = 1;
+            winner = board[i][0];
+        }
     }
-    else if (status == 1) {
-        if (player_symbol == 1) window.alert("你輸了!下次再努力!");
-        else if (player_symbol == 2) window.alert("恭喜!你贏了!");
-        location.reload()
+
+    for (var i = 0; i < 3; i++) {
+        if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != '') {
+            status = 1;
+            winner = board[0][i];
+        }
     }
-    else if (status == 3) {
-        window.alert("這局平手!");
-        location.reload()
+
+    if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != '') {
+        status = 1;
+        winner = board[0][0];
     }
+
+    if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != '') {
+        status = 1;
+        winner = board[0][2];
+    }
+
+    if (!flag) status = 2;
+
+    if (status == 1) {
+        if (winner == player) {
+            alert("You Win");
+            location.reload();
+        } else {
+            alert("You Lose");
+            location.reload();
+        }
+    }
+    else if (status == 2) {
+        alert("Draw");
+        location.reload();
+    }
+
 }
 
-function PlaceItem(item_name) {
-    var cur_btn = d.getElementsByName("btn-" + item_name)[0];
-    console.log(cur_btn.innerHTML);
-    if (arr[parseInt(item_name)] == '') {
-        arr[parseInt(item_name)] = cur_symbol;
-        cur_btn.innerHTML = cur_symbol;
+function add(e) {
+    var et = e.target;
+    var btn_id = parseInt(et.getAttribute("data-id"));
+    var r = Math.floor(btn_id / 3);
+    var c = btn_id % 3;
 
-        if (cur_symbol == 'O') cur_symbol = 'X';
-        else cur_symbol = 'O'
+    if (board[r][c] == '') {
+        console.log(btn_id);
+        board[r][c] = turn;
+        et.setAttribute("value", turn);
+        turn = (turn == 'X') ? 'O' : 'X';
     }
-    Check();
+    check();
 }
 
 window.onload = function () {
-
 }

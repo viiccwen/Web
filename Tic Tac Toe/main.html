@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <script src="./script.js"></script>
-    <link rel="stylesheet" href="./style.css">
-    <title>Tic Tac Toe</title>
-</head>
-<body>
-    <dialog open>
-        <form method="dialog" onclick="chooseSymbol(event)">
-            <h2>選擇你的符號</h2>
-            <button class="dia-btn d-x" data-target="X">X</button>
-            <button class="dia-btn d-o" data-target="O">O</button>
-        </form>
+    <title>P3</title>
+  </head>
+  <body>
+    <dialog id="dialog" open>
+      <form onclick="select(event)">
+        <h2>選擇你的符號</h2>
+        <input type="button" class="btn sel-btn" value="X" />
+        <input type="button" class="btn sel-btn" value="O" />
+      </form>
     </dialog>
-    <div class="game-container row-1">
-        <button name="btn-0" class="btn" onclick="PlaceItem('0')"></button>
-        <button name="btn-1" class="btn" onclick="PlaceItem('1')"></button>
-        <button name="btn-2" class="btn" onclick="PlaceItem('2')"></button>
-    </div>
-    <div class="game-container row-2">
-        <button name="btn-3" class="btn" onclick="PlaceItem('3')"></button>
-        <button name="btn-4" class="btn" onclick="PlaceItem('4')"></button>
-        <button name="btn-5" class="btn" onclick="PlaceItem('5')"></button>
-    </div>
-    <div class="game-container row-3">
-        <button name="btn-6" class="btn" onclick="PlaceItem('6')"></button>
-        <button name="btn-7" class="btn" onclick="PlaceItem('7')"></button>
-        <button name="btn-8" class="btn" onclick="PlaceItem('8')"></button>
-    </div>
-</body>
+    <form onclick="add(event)">
+      <div class="game-container">
+        <input type="button" class="btn game-btn" data-id="0" />
+        <input type="button" class="btn game-btn" data-id="1" />
+        <input type="button" class="btn game-btn" data-id="2" />
+      </div>
+      <div class="game-container">
+        <input type="button" class="btn game-btn" data-id="3" />
+        <input type="button" class="btn game-btn" data-id="4" />
+        <input type="button" class="btn game-btn" data-id="5" />
+      </div>
+      <div class="game-container">
+        <input type="button" class="btn game-btn" data-id="6" />
+        <input type="button" class="btn game-btn" data-id="7" />
+        <input type="button" class="btn game-btn" data-id="8" />
+      </div>
+    </form>
+  </body>
 </html>
