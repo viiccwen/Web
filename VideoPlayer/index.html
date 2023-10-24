@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script.js"></script>
+    <title>VideoPlayer</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <video class="videoplayer" style="width: 70%" controls></video>
+      </div>
+      <div class="d-flex justify-content-center">
+        <input
+          class="videofile"
+          type="file"
+          accept="video/mp4"
+          style="margin: 5px"
+          onchange="VideoLoad()"
+        />
+        <button
+          class="btn btn-primary text-nowrap btn-player"
+          data-target="play"
+          style="margin: 5px"
+          onclick="toplay(event)"
+        >
+          播放
+        </button>
+        <button
+          class="btn btn-primary text-nowrap"
+          style="margin: 5px"
+          onclick="screen('inc')"
+        >
+          放大
+        </button>
+        <button
+          class="btn btn-primary text-nowrap"
+          style="margin: 5px"
+          onclick="screen('dec')"
+        >
+          縮小
+        </button>
+        <button
+          class="btn btn-primary text-nowrap"
+          style="margin: 5px"
+          onclick="screen('nor')"
+        >
+          正常
+        </button>
+        <input
+          class="volumn-adjust m-x-2"
+          type="range"
+          min="0"
+          max="1"
+          step="0.1"
+          value="1"
+          style="margin: 5px"
+          onchange="VolumnAdjust()"
+        />
+      </div>
+      <div class="d-flex progressinfo justify-content-center">
+        <div style="margin: 10px">0:00 / 0:00</div>
+      </div>
+    </div>
+  </body>
+</html>
