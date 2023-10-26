@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script.js"></script>
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div
+      class="container"
+      style="
+        width: 300px;
+        background-color: darkorange;
+        border-radius: 10px;
+        padding: 20px;
+      "
+    >
+      <h2 style="text-align: center">Calculator</h2>
+      <div class="d-grid gap-2">
+        <div>
+          <input type="text" class="col-8" id="screen" />
+          <button class="btn btn-danger col-3" onclick="Clear()">Clear</button>
+        </div>
+        <div>
+          <button
+            class="btn btn-primary col-3"
+            data-target="7"
+            onclick="AppendNumber(event)"
+          >
+            7
+          </button>
+          <button
+            class="btn btn-primary col-3"
+            data-target="8"
+            onclick="AppendNumber(event)"
+          >
+            8
+          </button>
+          <button
+            class="btn btn-primary col-3"
+            data-target="9"
+            onclick="AppendNumber(event)"
+          >
+            9
+          </button>
+          <button
+            class="btn btn-primary"
+            data-target="/"
+            onclick="AppendSymbol(event)"
+          >
+            /
+          </button>
+        </div>
+        <div>
+          <button
+            class="btn btn-primary col-3"
+            data-target="4"
+            onclick="AppendNumber(event)"
+          >
+            4
+          </button>
+          <button
+            class="btn btn-primary col-3"
+            data-target="5"
+            onclick="AppendNumber(event)"
+          >
+            5
+          </button>
+          <button
+            class="btn btn-primary col-3"
+            data-target="6"
+            onclick="AppendNumber(event)"
+          >
+            6
+          </button>
+          <button
+            class="btn btn-primary"
+            data-target="-"
+            onclick="AppendSymbol(event)"
+          >
+            -
+          </button>
+        </div>
+        <div>
+          <button
+            class="btn btn-primary col-3"
+            data-target="1"
+            onclick="AppendNumber(event)"
+          >
+            1
+          </button>
+          <button
+            class="btn btn-primary col-3"
+            data-target="2"
+            onclick="AppendNumber(event)"
+          >
+            2
+          </button>
+          <button
+            class="btn btn-primary col-3"
+            data-target="3"
+            onclick="AppendNumber(event)"
+          >
+            3
+          </button>
+          <button
+            class="btn btn-primary"
+            data-target="*"
+            onclick="AppendSymbol(event)"
+          >
+            *
+          </button>
+        </div>
+        <div>
+          <button
+            class="btn btn-primary col-2"
+            data-target="."
+            onclick="AppendNumber(event)"
+          >
+            .
+          </button>
+          <button
+            class="btn btn-primary col-3"
+            data-target="0"
+            onclick="AppendNumber(event)"
+          >
+            0
+          </button>
+          <button
+            class="btn btn-danger col-4"
+            data-target="="
+            onclick="Calculate()"
+          >
+            =
+          </button>
+          <button
+            class="btn btn-primary"
+            data-target="+"
+            onclick="AppendSymbol(event)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
