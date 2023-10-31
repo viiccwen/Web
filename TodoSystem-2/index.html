@@ -155,6 +155,35 @@
       TaskDisplay();
     }
 
+    function IntoString(str) {
+      var time = new Date(str);
+      var year = time.getFullYear();
+      var month = time.getMonth() + 1;
+      var date = time.getDate();
+      var hour = time.getHours();
+      var minute = time.getMinutes();
+      var ampm = hour >= 12 ? "PM" : "AM";
+      var MonthTable = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      var result = `${date} ${
+        MonthTable[month - 1]
+      } ${year} ${hour}:${minute} ${ampm}`;
+      return result;
+    }
+
     function TaskAdd() {
       var title = d.querySelector(".title");
       var description = d.querySelector(".description");
@@ -170,7 +199,7 @@
         title: title.value,
         description: description.value,
         datetime: new Date(datetime.value),
-        datetimeString: datetime.value,
+        datetimeString: IntoString(datetime.value),
       });
 
       title.value = "";
@@ -180,7 +209,7 @@
 
       TaskSort();
       TaskDisplay();
-      console.log(nonfinished[0].id);
+      //console.log(nonfinished[0].id);
     }
   </script>
 </html>
