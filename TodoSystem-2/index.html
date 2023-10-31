@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./bootstrap.css" />
+    <script src="./script.js"></script>
+    <script src="./jquery.js"></script>
+    <script src="./bootstrap.js"></script>
+    <title>TodoSystem-2</title>
+  </head>
+  <body>
+    <h1 class="text-align-center">代辦事件系統</h1>
+    <div class="container text-align-center">
+      <input type="text" class="title" placeholder="標題" />
+      <input type="text" class="description" placeholder="介紹" />
+      <input type="datetime-local" class="datetime" />
+      <button class="btn btn-primary" onclick="TaskAdd()">新增</button>
+    </div>
+    <div class="row">
+      <div class="col-6 nonfinishDiv">
+        <h3>未完成</h3>
+        <div id="div-0">
+          <ul>
+            <li id="title-0">aaa</li>
+            <div id="description-0">aaa</div>
+            <div id="datetime-0">aaa</div>
+            <button
+              class="btn btn-danger"
+              id="delbtn-0"
+              data-target="0"
+              onclick="TaskDelete(event)"
+            >
+              刪除
+            </button>
+            <button
+              class="btn btn-primary"
+              id="donebtn-0"
+              data-target="0"
+              onclick="TaskDone(event)"
+            >
+              完成
+            </button>
+          </ul>
+        </div>
+      </div>
+      <div class="col-6 finishDiv">
+        <h3>完成</h3>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const d = document;
+    var nonfinished = [];
+    var finished = [];
+    var Itemid = 0;
+
+    function TaskDisplay() {
+      var nonfinish = d.querySelector(".nonfinishDiv");
+      var finish = d.querySelector(".finishDiv");
+
+      nonfinish.innerHTML = "<h3>未完成</h3>";
+      finish.innerHTML = "<h3>完成</h3>";
+
+      for (var i = 0; i < nonfinished.length; i++) {
+        nonfinish.innerHTML += `<div id="div-${nonfinished[i].id}">
+          <ul>
+            <li id="title-${nonfinished[i].id}">${nonfinished[i].title}</li>
+            <div id="description-${nonfinished[i].id}">${nonfinished[i].description}</div>
+            <div id="datetime-${nonfinished[i].id}">${nonfinished[i].datetimeString}</div>
+            <button
+              class="btn btn-danger"
+              id="delbtn-${nonfinished[i].id}"
+              data-target="${nonfinished[i].id}"
+              onclick="TaskDelete(event)"
+            >
+              刪除
+            </button>
+            <button
+              class="btn btn-primary"
+              id="donebtn-${nonfinished[i].id}"
+              data-target="${nonfinished[i].id}"
+              onclick="TaskDone(event)"
+            >
+              完成
+            </button>
+          </ul>
+        </div>`;
+      }
+
+      for (var i = 0; i < finished.length; i++) {
+        finish.innerHTML += `<div id="div-${finished[i].id}">
+          <ul>
+            <li id="title-${finished[i].id}">${finished[i].title}</li>
+            <div id="description-${finished[i].id}">${finished[i].description}</div>
+            <div id="datetime-${finished[i].id}">${finished[i].datetimeString}</div>
+            <button
+              class="btn btn-danger"
+              id="delbtn-${finished[i].id}"
+              data-target="${finished[i].id}"
+              onclick="TaskDelete(event)"
+            >
+              刪除
+            </button>
+          </ul>
+        </div>`;
+      }
+    }
+
+    function TaskSort() {
+      nonfinished.sort(function (a, b) {
+        return a.datetime - b.datetime;
+      });
+
+      finished.sort(function (a, b) {
+        return a.datetime - b.datetime;
+      });
+    }
+
+    function TaskDelete(e) {
+      var et = e.target;
+      var CurId = et.getAttribute("data-target");
+
+      if (nonfinished.find((x) => x.id == CurId) != undefined) {
+        nonfinished.splice(
+          nonfinished.findIndex((x) => x.id == CurId),
+          1
+        );
+      } else if (finished.find((x) => x.id == CurId) != undefined) {
+        finished.splice(
+          finished.findIndex((x) => x.id == CurId),
+          1
+        );
+      }
+
+      TaskSort();
+      TaskDisplay();
+    }
+
+    function TaskDone(e) {
+      var et = e.target;
+      var CurId = et.getAttribute("data-target");
+
+      if (nonfinished.find((x) => x.id == CurId) != undefined) {
+        finished.push(nonfinished.find((x) => x.id == CurId));
+        nonfinished.splice(
+          nonfinished.findIndex((x) => x.id == CurId),
+          1
+        );
+      }
+
+      TaskSort();
+      TaskDisplay();
+    }
+
+    function TaskAdd() {
+      var title = d.querySelector(".title");
+      var description = d.querySelector(".description");
+      var datetime = d.querySelector(".datetime");
+
+      if (title.value == "" || datetime.value == "") {
+        alert("請輸入標題與時間!");
+        return;
+      }
+
+      nonfinished.push({
+        id: Itemid,
+        title: title.value,
+        description: description.value,
+        datetime: new Date(datetime.value),
+        datetimeString: datetime.value,
+      });
+
+      title.value = "";
+      description.value = "";
+      datetime.value = "";
+      Itemid++;
+
+      TaskSort();
+      TaskDisplay();
+      console.log(nonfinished[0].id);
+    }
+  </script>
+</html>
